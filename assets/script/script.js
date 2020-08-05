@@ -5,6 +5,7 @@
     var downloadButton = document.querySelector('#download');
     var downloadContainer = document.querySelector('.download-container');
     var note = document.querySelector('#note');
+    var downloadAs = document.getElementById('download-as');
 
     var addScriptToPage = function (url) {
         var s = document.createElement('script');
@@ -85,6 +86,8 @@
     downloadButton.addEventListener('click', function (e) {
         e.preventDefault();
         var data = {};
+        var filename = "translated_"+Date.now();
+        var downloadFileType = downloadAs.value;
         table.querySelectorAll('tbody tr.without-variable').forEach(function (row) {
             data[row.querySelector('.from-col').innerText] = row.querySelector('.to-col').innerText;
         });
@@ -93,14 +96,22 @@
             data[row.querySelector('.from-col').innerText] = row.querySelector('.to-col').innerText;
         });
 
-        // if (table.querySelectorAll('tbody tr.with-variable').length) {
-        //     alert(`${table.querySelectorAll('tbody tr.with-variable').length} rows were not translated because they have variables. Please do them manually.`);
-        // }
+        if (downloadFileType === 'json') {
+            data = JSON.stringify(data, null, 2);
+            filename += '.json';
+        } else if (downloadFileType === 'csv') {
+            var csvData = [];
+            Object.keys(data).forEach(function (row) {
+                csvData.push([row, data[row]])
+            });
+            data = Papa.unparse(csvData)
+            filename += '.csv';
+        }
 
         let j = document.createElement("a")
         j.id = "download"
-        j.download = "translated_"+Date.now()+".json"
-        j.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)]));
+        j.download = filename
+        j.href = URL.createObjectURL(new Blob([data]));
         j.click()
 
     });

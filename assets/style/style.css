@@ -34,7 +34,7 @@ label {
     overflow: auto;
     margin: 2em;
 }
-#download {
+#download, #download-as {
     margin-top: 1em;
     font-size: 1em;
     padding: 10px 20px;
