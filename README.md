@@ -1,4 +1,6 @@
-k# Translathor
+# Translathor
+
+Made with <3 by [Joy](https://github.com/jayankaghosh)
 
 Now translate bulk strings at one shot and in multiple languages using Translathor
 
