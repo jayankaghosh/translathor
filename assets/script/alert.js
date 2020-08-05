@@ -10,6 +10,7 @@
             if (!document.getElementById(this.containerId)) {
                 this.container = document.createElement('div');
                 this.container.setAttribute('id', this.containerId);
+                this.container.className = 'notranslate';
                 this.container.style.cssText = `position: absolute; z-index: 100; top: 0; right: 0; margin-top: 2em; margin-right: 3em;`;
                 this.container.innerHTML = '<div class="messages" style="font-size: 1.5em;"></div>';
                 document.body.appendChild(this.container)
