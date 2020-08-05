@@ -6,11 +6,13 @@
     var downloadContainer = document.querySelector('.download-container');
     var note = document.querySelector('#note');
 
-    var addGoogleTranslateToPage = function () {
+    var addScriptToPage = function (url) {
         var s = document.createElement('script');
-        s.src = 'https://translate.google.com/translate_a/element.js';
+        s.src = url;
         document.head.appendChild(s);
     };
+
+
 
     var moveToTable = function (filename, data) {
         var tbody = table.querySelector('tbody');
@@ -65,8 +67,19 @@
             reader.onload = function(e) {
                 moveToTable(theFile.name, Object.keys(JSON.parse(e.target.result)));
             };
-            reader.readAsBinaryString(theFile);
+        } else if (theFile.type === 'text/csv') {
+            reader.onload = function(e) {
+                var data = Papa.parse(e.target.result).data.map(function (row) {
+                    return row[0];
+                }).filter(function (item) {
+                    return item;
+                });
+                moveToTable(theFile.name, data);
+            };
+        } else {
+            alert(`Type "${theFile.type}" not supported`);
         }
+        reader.readAsBinaryString(theFile);
     });
 
     downloadButton.addEventListener('click', function (e) {
@@ -96,6 +109,7 @@
         new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
     }
 
-    addGoogleTranslateToPage();
+    addScriptToPage('https://translate.google.com/translate_a/element.js');
+    addScriptToPage('./assets/script/papaparse.min.js');
 
 })(window.document, window.alert);
