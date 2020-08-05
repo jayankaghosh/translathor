@@ -1,0 +1,74 @@
+body {
+    font-family: Arial,serif;
+    margin: 0;
+}
+.left {
+    display: inline-block;
+    width: 15%;
+    height: 100vh;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+.left img {
+    width: 100%;
+    height: auto;
+}
+.main {
+    padding: 1em;
+    vertical-align: top;
+    display: inline-block;
+    height: 100vh;
+    background: #fefefe;
+    width: 80%;
+}
+div.step {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+label {
+    font-weight: bold;
+    margin-left: 10px;
+}
+.main .data-table {
+    max-height: 600px;
+    overflow: auto;
+    margin: 2em;
+}
+#download {
+    margin-top: 1em;
+    font-size: 1em;
+    padding: 10px 20px;
+}
+#data {
+    border: 1px solid silver;
+    padding: 0;
+    width: 100%;
+}
+#data th {
+    background: #4CAF50;
+    color: #f0f0f0;
+}
+#data th, #data td {
+    padding: 1em;
+    text-align: left;
+}
+#data tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+}
+#data tbody tr.with-variable {
+    background: #ff3d3d;
+    color: #f0f0f0;
+}
+#data tbody tr td:focus {
+    background: #edff00;
+    color: black;
+}
+#note {
+    margin-left: 1em;
+}
+#google_translate_element {
+    display: inline-block;
+}
+.goog-te-gadget-simple {
+    font-size: 1.5em !important;
+}
