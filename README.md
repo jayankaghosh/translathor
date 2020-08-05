@@ -1,6 +1,8 @@
-# Translathor
+k# Translathor
 
 Now translate bulk strings at one shot and in multiple languages using Translathor
+
+Demo - https://translathor.herokuapp.com/
 
 ### With Translathor, translating bulk strings are as easy as
 1. `Upload` - Upload a json file with `{"English": null, ...}` format
