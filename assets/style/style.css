@@ -51,6 +51,7 @@ label {
 #data th, #data td {
     padding: 1em;
     text-align: left;
+    white-space: pre;
 }
 #data tbody tr:nth-child(odd) {
     background: #f2f2f2;
